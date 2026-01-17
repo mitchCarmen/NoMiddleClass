@@ -4,7 +4,9 @@ An interactive data presentation examining 100 years of wealth inequality in Ame
 
 ## 📊 View the Presentation
 
-Open `index.html` in any modern web browser to view the interactive presentation.
+**Live on the web:** [https://mitchcarmen.github.io/NoMiddleClass/](https://mitchcarmen.github.io/NoMiddleClass/)
+
+Or open `index.html` locally in any modern web browser.
 
 ## 📈 Key Findings
 
