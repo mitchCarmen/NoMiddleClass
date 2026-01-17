@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Disappearing Middle Class: 100 Years of Wealth Inequality in America</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Title Slide -->
+        <section class="slide" id="slide-1">
+            <div class="slide-content title-slide">
+                <h1>The Disappearing Middle Class</h1>
+                <h2>100 Years of Wealth Inequality in America</h2>
+                <p class="subtitle">A Statistical Analysis of the Wealth Gap, CEO Pay, and What Could Be Different</p>
+                <div class="sources-note">Data sourced from Federal Reserve, Economic Policy Institute, Saez & Zucman Research</div>
+            </div>
+        </section>
+
+        <!-- Executive Summary -->
+        <section class="slide" id="slide-2">
+            <div class="slide-content">
+                <h2>Executive Summary</h2>
+                <div class="key-stats-grid">
+                    <div class="stat-card red">
+                        <div class="stat-number">30.5%</div>
+                        <div class="stat-label">of all US wealth held by top 1%</div>
+                        <div class="stat-context">Q1 2024</div>
+                    </div>
+                    <div class="stat-card red">
+                        <div class="stat-number">2.5%</div>
+                        <div class="stat-label">of wealth held by bottom 50%</div>
+                        <div class="stat-context">165 million Americans</div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="stat-number">281:1</div>
+                        <div class="stat-label">CEO-to-worker pay ratio (2024)</div>
+                        <div class="stat-context">Was 21:1 in 1965</div>
+                    </div>
+                    <div class="stat-card blue">
+                        <div class="stat-number">1,094%</div>
+                        <div class="stat-label">CEO pay increase since 1978</div>
+                        <div class="stat-context">Workers: only 26%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historical Context -->
+        <section class="slide" id="slide-3">
+            <div class="slide-content">
+                <h2>The U-Shaped History of Wealth Inequality</h2>
+                <div class="chart-container">
+                    <canvas id="historicalWealthChart"></canvas>
+                </div>
+                <div class="insight-box">
+                    <strong>Key Insight:</strong> The top 0.1% wealth share peaked at ~25% in 1929, fell to ~7% by 1979,
+                    and has risen back to ~22% by 2012—nearly returning to 1929 levels.
+                </div>
+            </div>
+        </section>
+
+        <!-- The Golden Age -->
+        <section class="slide" id="slide-4">
+            <div class="slide-content">
+                <h2>The "Golden Age" of the Middle Class (1940s-1970s)</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>What Made It Work</h3>
+                        <ul class="feature-list">
+                            <li><span class="icon">💪</span> Strong labor unions</li>
+                            <li><span class="icon">🏠</span> Homeownership expansion (30-year mortgages)</li>
+                            <li><span class="icon">📈</span> 2.9% average annual income growth</li>
+                            <li><span class="icon">💰</span> Top marginal tax rate ~90%</li>
+                            <li><span class="icon">🎓</span> GI Bill education benefits</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>The Results</h3>
+                        <ul class="feature-list success">
+                            <li>Bottom 90% wealth share: <strong>20% → 35%</strong></li>
+                            <li>Living standards nearly doubled (1947-1973)</li>
+                            <li>Wealthiest had 36x middle class wealth (1963)</li>
+                            <li>Unemployment continuously fell</li>
+                            <li>Broadly shared prosperity</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="caveat-box">
+                    <strong>Important Caveat:</strong> This prosperity was not equally shared—African Americans and other minorities
+                    were systematically excluded from programs like the FHA and GI Bill.
+                </div>
+            </div>
+        </section>
+
+        <!-- The Reversal -->
+        <section class="slide" id="slide-5">
+            <div class="slide-content">
+                <h2>The Great Reversal (1980s-Present)</h2>
+                <div class="chart-container">
+                    <canvas id="bottom90Chart"></canvas>
+                </div>
+                <div class="comparison-stats">
+                    <div class="then-now">
+                        <div class="then">
+                            <h4>1963</h4>
+                            <p>Wealthiest families had <strong>36x</strong> the wealth of middle families</p>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="now">
+                            <h4>2022</h4>
+                            <p>Wealthiest families had <strong>71x</strong> the wealth of middle families</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CEO Pay Explosion -->
+        <section class="slide" id="slide-6">
+            <div class="slide-content">
+                <h2>The CEO Pay Explosion</h2>
+                <div class="chart-container">
+                    <canvas id="ceoPayChart"></canvas>
+                </div>
+                <div class="data-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>CEO-to-Worker Ratio</th>
+                                <th>Change from 1965</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1965</td><td>21:1</td><td>Baseline</td></tr>
+                            <tr><td>1978</td><td>31:1</td><td>+48%</td></tr>
+                            <tr><td>1989</td><td>60:1</td><td>+186%</td></tr>
+                            <tr><td>2000</td><td>380:1</td><td>+1,710%</td></tr>
+                            <tr><td>2007</td><td>329:1</td><td>+1,467%</td></tr>
+                            <tr><td>2024</td><td>281:1</td><td>+1,238%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CEO vs Worker Pay Growth -->
+        <section class="slide" id="slide-7">
+            <div class="slide-content">
+                <h2>Two Americas: CEO vs. Worker Pay Growth Since 1978</h2>
+                <div class="chart-container">
+                    <canvas id="payGrowthChart"></canvas>
+                </div>
+                <div class="stark-comparison">
+                    <div class="comparison-item ceo">
+                        <div class="label">CEO Pay Growth</div>
+                        <div class="value">+1,094%</div>
+                        <div class="context">Average CEO pay: $23 million (2024)</div>
+                    </div>
+                    <div class="comparison-item worker">
+                        <div class="label">Worker Pay Growth</div>
+                        <div class="value">+26%</div>
+                        <div class="context">Barely above inflation</div>
+                    </div>
+                </div>
+                <div class="insight-box">
+                    <strong>The Driver:</strong> Stock-based compensation now makes up 79% of CEO pay (up from 68% in 2006),
+                    explaining over 100% of CEO pay growth.
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Wealth Distribution -->
+        <section class="slide" id="slide-8">
+            <div class="slide-content">
+                <h2>Current US Wealth Distribution (2024)</h2>
+                <div class="chart-container">
+                    <canvas id="currentDistributionChart"></canvas>
+                </div>
+                <div class="distribution-breakdown">
+                    <div class="segment top1">
+                        <div class="percent">30.5%</div>
+                        <div class="group">Top 1%</div>
+                        <div class="population">(~3.3 million people)</div>
+                    </div>
+                    <div class="segment next9">
+                        <div class="percent">~35%</div>
+                        <div class="group">Next 9%</div>
+                        <div class="population">(90th-99th percentile)</div>
+                    </div>
+                    <div class="segment middle40">
+                        <div class="percent">~32%</div>
+                        <div class="group">Next 40%</div>
+                        <div class="population">(50th-90th percentile)</div>
+                    </div>
+                    <div class="segment bottom50">
+                        <div class="percent">2.5%</div>
+                        <div class="group">Bottom 50%</div>
+                        <div class="population">(~165 million people)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wealth by Percentile -->
+        <section class="slide" id="slide-9">
+            <div class="slide-content">
+                <h2>What Does Wealth Look Like at Each Level?</h2>
+                <div class="wealth-ladder">
+                    <div class="ladder-rung top-01">
+                        <div class="percentile">Top 0.1%</div>
+                        <div class="threshold">$43+ million</div>
+                        <div class="total-share">Holds $6.5 trillion (more than 2x bottom 50%)</div>
+                    </div>
+                    <div class="ladder-rung top-1">
+                        <div class="percentile">Top 1%</div>
+                        <div class="threshold">$13.7+ million</div>
+                        <div class="total-share">Holds $14.8 trillion</div>
+                    </div>
+                    <div class="ladder-rung top-10">
+                        <div class="percentile">Top 10%</div>
+                        <div class="threshold">$1.56+ million</div>
+                        <div class="total-share">Holds ~65% of all wealth</div>
+                    </div>
+                    <div class="ladder-rung median">
+                        <div class="percentile">Median (50th)</div>
+                        <div class="threshold">$192,084</div>
+                        <div class="total-share">Half of Americans have less</div>
+                    </div>
+                    <div class="ladder-rung bottom-10">
+                        <div class="percentile">Bottom 10%</div>
+                        <div class="threshold">~$1</div>
+                        <div class="total-share">Essentially zero wealth</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What If We Had a Middle Class? -->
+        <section class="slide" id="slide-10">
+            <div class="slide-content">
+                <h2>What If America Had a Healthy Middle Class?</h2>
+                <h3>Comparing Current US vs. Alternative Models</h3>
+                <div class="chart-container dual-chart">
+                    <div class="chart-half">
+                        <h4>Current US Distribution</h4>
+                        <canvas id="currentPieChart"></canvas>
+                    </div>
+                    <div class="chart-half">
+                        <h4>Model Middle Class Distribution</h4>
+                        <canvas id="idealPieChart"></canvas>
+                    </div>
+                </div>
+                <div class="model-explanation">
+                    <p><strong>The Model:</strong> Based on 1980s US distribution when bottom 90% held 35% of wealth,
+                    combined with Nordic-style Gini coefficients (~0.25 vs US 0.41)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Redistribution Analysis -->
+        <section class="slide" id="slide-11">
+            <div class="slide-content">
+                <h2>The Math of a Middle Class Society</h2>
+                <div class="redistribution-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Percentile Group</th>
+                                <th>Current Share</th>
+                                <th>Middle Class Model</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="decrease">
+                                <td>Top 1%</td>
+                                <td>30.5%</td>
+                                <td>15%</td>
+                                <td>-15.5 pts</td>
+                            </tr>
+                            <tr class="decrease">
+                                <td>Next 9% (90-99th)</td>
+                                <td>35%</td>
+                                <td>25%</td>
+                                <td>-10 pts</td>
+                            </tr>
+                            <tr class="increase">
+                                <td>Next 40% (50-90th)</td>
+                                <td>32%</td>
+                                <td>45%</td>
+                                <td>+13 pts</td>
+                            </tr>
+                            <tr class="increase">
+                                <td>Bottom 50%</td>
+                                <td>2.5%</td>
+                                <td>15%</td>
+                                <td>+12.5 pts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="key-finding">
+                    <strong>Key Finding:</strong> In this model, the middle 40% would control nearly half of wealth,
+                    creating a true "middle class majority" economy.
+                </div>
+            </div>
+        </section>
+
+        <!-- International Comparison -->
+        <section class="slide" id="slide-12">
+            <div class="slide-content">
+                <h2>How the US Compares Internationally</h2>
+                <div class="chart-container">
+                    <canvas id="giniChart"></canvas>
+                </div>
+                <div class="gini-explanation">
+                    <h4>What is the Gini Coefficient?</h4>
+                    <p>0 = Perfect equality (everyone has same wealth) | 1 = Perfect inequality (one person has everything)</p>
+                </div>
+                <div class="international-stats">
+                    <div class="country">
+                        <span class="flag">🇺🇸</span>
+                        <span class="name">United States</span>
+                        <span class="gini">0.41</span>
+                    </div>
+                    <div class="country">
+                        <span class="flag">🇬🇧</span>
+                        <span class="name">United Kingdom</span>
+                        <span class="gini">0.35</span>
+                    </div>
+                    <div class="country">
+                        <span class="flag">🇩🇪</span>
+                        <span class="name">Germany</span>
+                        <span class="gini">0.31</span>
+                    </div>
+                    <div class="country">
+                        <span class="flag">🇸🇪</span>
+                        <span class="name">Sweden</span>
+                        <span class="gini">0.28</span>
+                    </div>
+                    <div class="country">
+                        <span class="flag">🇮🇸</span>
+                        <span class="name">Iceland</span>
+                        <span class="gini">0.25</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stock Ownership -->
+        <section class="slide" id="slide-13">
+            <div class="slide-content">
+                <h2>The Stock Market: Engine of Inequality</h2>
+                <div class="chart-container">
+                    <canvas id="stockOwnershipChart"></canvas>
+                </div>
+                <div class="stock-facts">
+                    <div class="fact">
+                        <div class="number">50%</div>
+                        <div class="description">of all US stocks owned by the richest 1%</div>
+                        <div class="trend">Up from 40% in 2002</div>
+                    </div>
+                    <div class="fact">
+                        <div class="number">79%</div>
+                        <div class="description">of CEO pay comes from stock compensation</div>
+                        <div class="trend">Stock gains bypass worker wages entirely</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Went Wrong -->
+        <section class="slide" id="slide-14">
+            <div class="slide-content">
+                <h2>What Changed After the 1970s?</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="year">1970s</div>
+                        <div class="event">
+                            <h4>End of Broadly Shared Growth</h4>
+                            <p>International competition, declining productivity, stagnating wages</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">1980s</div>
+                        <div class="event">
+                            <h4>Union Decline & Deregulation</h4>
+                            <p>Financial deregulation, weakening labor protections, tax cuts for wealthy</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">1990s</div>
+                        <div class="event">
+                            <h4>Stock Option Explosion</h4>
+                            <p>CEO pay shifted to stock-based compensation; ratio hits 380:1 by 2000</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2000s+</div>
+                        <div class="event">
+                            <h4>Debt Replaces Savings</h4>
+                            <p>Mortgage, consumer credit, student debt surge; middle-class saving collapses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Takeaways -->
+        <section class="slide" id="slide-15">
+            <div class="slide-content">
+                <h2>Key Takeaways</h2>
+                <div class="takeaways-grid">
+                    <div class="takeaway">
+                        <div class="number">1</div>
+                        <div class="content">
+                            <h4>The Middle Class Was Built, Then Dismantled</h4>
+                            <p>Policy choices—unions, taxes, homeownership programs—created the middle class.
+                            Different policy choices reversed it.</p>
+                        </div>
+                    </div>
+                    <div class="takeaway">
+                        <div class="number">2</div>
+                        <div class="content">
+                            <h4>CEO Pay Decoupled from Worker Pay</h4>
+                            <p>CEOs gained 1,094% while workers gained 26%. Stock-based pay created a separate wealth track.</p>
+                        </div>
+                    </div>
+                    <div class="takeaway">
+                        <div class="number">3</div>
+                        <div class="content">
+                            <h4>We're Back to 1929 Levels</h4>
+                            <p>Wealth concentration has returned to pre-Depression peaks. The top 0.1% now holds 22% of wealth.</p>
+                        </div>
+                    </div>
+                    <div class="takeaway">
+                        <div class="number">4</div>
+                        <div class="content">
+                            <h4>Other Models Exist</h4>
+                            <p>Nordic countries achieve similar GDP with far less inequality.
+                            The US in the 1950s-70s achieved it too.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sources -->
+        <section class="slide" id="slide-16">
+            <div class="slide-content sources-slide">
+                <h2>Sources & References</h2>
+                <div class="sources-list">
+                    <div class="source-category">
+                        <h4>Federal Reserve Data</h4>
+                        <ul>
+                            <li><a href="https://www.federalreserve.gov/releases/z1/dataviz/dfa/distribute/chart/">Distribution of Household Wealth in the U.S.</a></li>
+                            <li><a href="https://fred.stlouisfed.org/release/tables?eid=813804&rid=453">FRED Wealth Percentile Data</a></li>
+                        </ul>
+                    </div>
+                    <div class="source-category">
+                        <h4>CEO Pay Research</h4>
+                        <ul>
+                            <li><a href="https://www.epi.org/publication/ceo-pay/">Economic Policy Institute - CEO Pay</a></li>
+                            <li><a href="https://www.epi.org/blog/ceo-pay-increased-in-2024-and-is-now-281-times-that-of-the-typical-worker-new-epi-landing-page-has-all-the-details/">EPI 2024 CEO Pay Report</a></li>
+                        </ul>
+                    </div>
+                    <div class="source-category">
+                        <h4>Historical Wealth Data</h4>
+                        <ul>
+                            <li><a href="https://gabriel-zucman.eu/files/SaezZucman2014.pdf">Saez & Zucman: Wealth Inequality Since 1913</a></li>
+                            <li><a href="https://apps.urban.org/features/wealth-inequality-charts/">Urban Institute: Nine Charts About Wealth Inequality</a></li>
+                        </ul>
+                    </div>
+                    <div class="source-category">
+                        <h4>Additional Sources</h4>
+                        <ul>
+                            <li><a href="https://www.cbpp.org/research/poverty-and-inequality/a-guide-to-statistics-on-historical-trends-in-income-inequality">CBPP Income Inequality Guide</a></li>
+                            <li><a href="https://inequality.org/facts/wealth-inequality/">Inequality.org Wealth Facts</a></li>
+                            <li><a href="https://www.pewresearch.org/social-trends/2020/01/09/trends-in-income-and-wealth-inequality/">Pew Research: Trends in Inequality</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="slide-nav">
+            <button id="prevBtn" class="nav-btn">← Previous</button>
+            <span id="slideCounter">1 / 16</span>
+            <button id="nextBtn" class="nav-btn">Next →</button>
+        </nav>
+    </div>
+
+    <script src="charts.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
